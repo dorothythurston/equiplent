@@ -1,9 +1,5 @@
 source 'https://rubygems.org'
 
-gem 'sass'
-gem 'bourbon'
-gem 'neat'
-gem 'bitters'
 gem 'clearance'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
