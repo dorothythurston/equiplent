@@ -1,20 +1,3 @@
-<h2><%= @item.name %></h2>
-
-<h3> Current and pending reservations for <%= @item.name %>:</h3>
-<% @item.reservations.each do |reservation| %>
-  <div>
-    <p>Begins at: <%= reservation.begins_at.to_formatted_s(:long) %>
-     Ends at: <%= reservation.ends_at.to_formatted_s(:long) %>
-   <% if @item.reserved_by?(current_user) %>
-     <div>
-       <%= link_to 'Change this reservation', edit_reservation_path(@item.reservation)%>
-     </div>
-   <% end %>
-  </div>
-<% end %>
-
-
-<h3>Make a new Reservation</h3>
 <%= form_for @reservation do |form| %>
   <%= render 'reservations/error_messages', reservation: form.object %>
   <%= form.hidden_field :item_id %>
@@ -28,5 +11,6 @@
 </div>
   <%= form.submit "Reserve Item" %>
 <% end %>
+<%= link_to 'Go back to item', item_path(@reservation.item) %>
 
 

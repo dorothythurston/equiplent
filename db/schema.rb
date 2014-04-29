@@ -11,16 +11,25 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140429142045) do
+ActiveRecord::Schema.define(version: 20140501173049) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "items", force: true do |t|
     t.string   "name"
-    t.string   "reservation_status"
     t.datetime "created_at"
     t.datetime "updated_at"
+  end
+
+  create_table "reservations", force: true do |t|
+    t.integer  "user_id",                                null: false
+    t.integer  "item_id",                                null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "reservation_status", default: "current", null: false
+    t.datetime "begins_at",                              null: false
+    t.datetime "ends_at",                                null: false
   end
 
   create_table "user_profiles", force: true do |t|

@@ -1,0 +1,17 @@
+<h2> Edit reservation for <%=@reservation.item.name %></h2>
+<%= form_for @reservation do |form| %>
+  <%= render 'reservations/error_messages', reservation: @reservation %>
+  <%= form.hidden_field :item_id %>
+  <div>
+    <%= form.label :begins_at, "Reservation Start" %>
+    <%= form.datetime_select :begins_at, {start_year: Time.now.year, end_year: 2020, prompt: true, order: [:day, :month, :year]} %>
+  </div>
+  <div>
+    <%= form.label :ends_at, "Reservation End" %>
+    <%= form.datetime_select :ends_at, {start_year: Time.now.year, end_year: 2020, prompt: true, order: [:day, :month, :year]} %>
+</div>
+  <%= form.submit "Update Reservation" %>
+<% end %>
+
+<%= link_to "Delete Reservation", reservation_path, method: :delete,
+        confirm: "Are you sure you want to delete this reservation?" %>

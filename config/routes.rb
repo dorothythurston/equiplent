@@ -5,6 +5,8 @@ Equiplent::Application.routes.draw do
   resource :dashboard, only: [:show]
   resources :searches, only: [:show]
   resources :items, only: [:new, :create, :show]
+  resources :reservations, only: [:show, :destroy, :update, :create, :new, :edit]
+
   resources :users,
     controller: 'users',
     only: Clearance.configuration.user_actions

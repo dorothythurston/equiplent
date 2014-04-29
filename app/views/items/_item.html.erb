@@ -1,4 +1,9 @@
 <div>
-  <%= item.name %>
-  <%= item.reservation_status %>
+  <h3><%= item.name %></h3>
+  <% if item.reserved_by?(current_user) %>
+    <div>
+      <%= link_to 'Change your current reservation', edit_reservation_path(item.reservation)%>
+    </div>
+  <% end %>
+  <%= link_to 'View all current reservations', item_path(item) %>
 </div>

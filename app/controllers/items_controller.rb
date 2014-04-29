@@ -10,6 +10,7 @@ class ItemsController < ApplicationController
 
   def show
     @item = Item.find(params[:id])
+    @reservation = Reservation.new(item: @item)
   end
 
   private
@@ -17,7 +18,6 @@ class ItemsController < ApplicationController
   def item_params
     params.require(:item).permit(
       :name,
-      :reservation_status
     )
   end
 end
