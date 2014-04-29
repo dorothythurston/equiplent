@@ -1,0 +1,5 @@
+<h2>Add new Item</h2>
+<%= form_for(@item) do |form| %>
+  <%= form.text_field :name, placeholder: "Name" %>
+  <%= form.submit "Create Item" %>
+<% end %>
