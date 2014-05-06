@@ -1,5 +1,6 @@
 <div>
   <h3><%= item.name %></h3>
+  <%= image_tag item.url, width: 200 %>
   <% if item.reserved_by?(current_user) %>
     <div>
       <%= link_to 'Change your current reservation', edit_reservation_path(item.reservation)%>
