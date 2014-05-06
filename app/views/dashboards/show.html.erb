@@ -1,9 +1,11 @@
 <h2>Welcome</h2>
-<%= link_to "Make a New  Item", new_item_path %>
+<% if current_user.admin? %>
+  <%= link_to "Make a New Item", new_item_path %>
+<% end %>
 
 <% if current_user.open_reservations.present? %>
   <h2>My Reserved Items</h2>
-  <% @reservations.each do |reservation| %>
+  <% @open_reservations.each do |reservation| %>
     <%= link_to reservation.item.name, reservation %>
   <% end %>
 
