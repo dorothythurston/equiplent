@@ -5,6 +5,8 @@ class User < ActiveRecord::Base
   has_many :reservations
   has_many :items, through: :reservations
 
+  TYPES = ['brown student', 'guest']
+
   def open_reservations
     reservations.where(reservation_status: "reserved")
   end

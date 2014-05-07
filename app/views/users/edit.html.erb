@@ -1,0 +1,10 @@
+<h2> Edit information </h2>
+<%= form_for(current_user) do |form| %>
+  <%= form.text_field :first_name, placeholder: "First Name" %>
+  <%= form.text_field :last_name, placeholder: " Last Name" %>
+  <%= form.text_field :telephone, placeholder: "Telephone" %>
+  <%= form.email_field :email, placeholder: "Email" %>
+  <%= form.select :profile_type, User::TYPES, include_blank: "User Type" %>
+  <%= form.check_box :admin %>
+  <%= form.submit "Update" %>
+<% end %>

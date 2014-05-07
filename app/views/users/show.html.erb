@@ -1,0 +1,30 @@
+<h2><%= @user.first_name %> <%= @user.last_name %></h2>
+<div>
+  <%= @user.profile_type %>
+</div>
+
+<% if current_user.admin %>
+  <%= form_for(@user) do |form| %>
+    <%= form.check_box :admin %>
+    <%= form.submit 'Change Admin Status' %>
+  <% end %>
+<% end %>
+
+<% if @user = current_user %>
+  <div>
+    <%= link_to 'Edit personal information', edit_user_path(current_user) %>
+  </div>
+<% end %>
+
+<h3>Reservations:</h3>
+<ul>
+<% @user.reservations.each do |reservation|%>
+  <div>
+    <li>
+      <%= reservation.item.name %> <%= reservation.item.item_type %>
+      // <%= reservation.begins_at.to_formatted_s(:long) %>
+      -- <%= reservation.ends_at.to_formatted_s(:long) %>
+    </li>
+  </div>
+</ul>
+<% end %>
