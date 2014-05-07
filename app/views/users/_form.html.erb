@@ -14,6 +14,11 @@
 </div>
 
 <div class='text-field'>
+  <%= form.label :profile_type, 'Account Type' %>
+  <%= form.select :profile_type, User::TYPES, include_blank: "select type" %>
+</div>
+
+<div class='text-field'>
   <%= form.label :email %>
   <%= form.text_field :email, type: 'email' %>
 </div>
