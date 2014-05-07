@@ -1,6 +1,8 @@
 class Item < ActiveRecord::Base
  has_many :reservations, dependent: :destroy
 
+ TYPES = ['camera', 'tripod', 'audio', 'other']
+
  def reservation
    reservations.where(reservation_status: "current").first
  end
