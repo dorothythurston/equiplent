@@ -1,5 +1,5 @@
 <h2><%= @item.name %></h2> 
-<h3><%= @item.item_type %></h3>
+<h3><%= @item.category %></h3>
 <%= image_tag @item.url, width: 200 %>
 
 <% if current_user.admin? %>
@@ -11,8 +11,11 @@
 <h3> Current and pending reservations for <%= @item.name %>:</h3>
 <% @item.reservations.each do |reservation| %>
   <div>
-    <p>Begins at: <%= reservation.begins_at.to_formatted_s(:long) %>
-     Ends at: <%= reservation.ends_at.to_formatted_s(:long) %>
+    <p>
+      Begins at: <%= reservation.begins_at.to_formatted_s(:long) %>
+      Ends at: <%= reservation.ends_at.to_formatted_s(:long) %>
+      Reservation status: <%= reservation.reservation_status %>
+    </p>
    <% if @item.reserved_by?(current_user) %>
      <div>
        <%= link_to 'Change this reservation', edit_reservation_path(@item.reservation)%>

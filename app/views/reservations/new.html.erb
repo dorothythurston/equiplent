@@ -9,7 +9,7 @@
     <%= form.label :ends_at, "Reservation End" %>
     <%= form.datetime_select :ends_at, {start_year: Time.now.year, end_year: 2020, prompt: true, order: [:day, :month, :year]} %>
 </div>
-  <%= form.submit "Reserve Item" %>
+  <%= form.submit "Reserve Item", confirm: 'Your reservation will be made pending admin approval' %>
 <% end %>
 <%= link_to 'Go back to item', item_path(@reservation.item) %>
 

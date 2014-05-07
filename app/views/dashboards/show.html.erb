@@ -1,6 +1,14 @@
 <h2>Welcome</h2>
 <% if current_user.admin? %>
-  <%= link_to "Make a New Item", new_item_path %>
+  <div>
+    <%= link_to 'View all Reservations', reservations_path %>
+  </div>
+  <div>
+    <%= link_to "View all Equipment", items_path %>
+  </div>
+  <div>
+    <%= link_to "Make a New Item", new_item_path %>
+  </div>
 <% end %>
 
 <% if current_user.open_reservations.present? %>

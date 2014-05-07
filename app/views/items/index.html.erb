@@ -1,0 +1,14 @@
+<h2>Equipment Log</h2>
+<div>
+  <%= link_to "Make a New Item", new_item_path %>
+</div>
+
+<% @items.each do |item| %>
+  <div>
+    <li>
+      <%= item.name %> <%= item.category %>
+      <%= link_to 'View Item', item_path(item) %>
+    </li>
+  </div>
+</ul>
+<% end %>

@@ -7,8 +7,10 @@ class Reservation < ActiveRecord::Base
 
   validates_with DateChecker
 
+  TYPES = ['approved', 'pending', 'current', 'closed']
+
   def current_reservation?
-    reservation_status == "reserved"
+    reservation_status == "approved"
   end
 
   def pending_reservation?

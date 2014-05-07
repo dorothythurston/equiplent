@@ -1,8 +1,11 @@
 <h2>Reservation for <%= @reservation.item.name %></h2>
 <div>
-  <p>You have this item reserved from: <%= @reservation.begins_at.to_formatted_s(:long)  %>
+  <p>
+    Reservation dates: <%= @reservation.begins_at.to_formatted_s(:long)  %>
+    -- <%= @reservation.ends_at.to_formatted_s(:long) %>
+    // status: <%= @reservation.reservation_status %>
+  </p>
 </div>
-<div>
-  Until: <%= @reservation.ends_at.to_formatted_s(:long) %></p>
-</div>
-<%= link_to "Edit this Reservation", edit_reservation_path %>
+<% if current_user == @reservation.user %>
+  <%= link_to "Edit this Reservation", edit_reservation_path %>
+<% end %>

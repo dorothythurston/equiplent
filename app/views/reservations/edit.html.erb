@@ -2,6 +2,7 @@
 <%= form_for @reservation do |form| %>
   <%= render 'reservations/error_messages', reservation: @reservation %>
   <%= form.hidden_field :item_id %>
+  <%= form.hidden_field :reservation_status, value: "pending" %>
   <div>
     <%= form.label :begins_at, "Reservation Start" %>
     <%= form.datetime_select :begins_at, {start_year: Time.now.year, end_year: 2020, prompt: true, order: [:day, :month, :year]} %>
@@ -10,7 +11,7 @@
     <%= form.label :ends_at, "Reservation End" %>
     <%= form.datetime_select :ends_at, {start_year: Time.now.year, end_year: 2020, prompt: true, order: [:day, :month, :year]} %>
 </div>
-  <%= form.submit "Update Reservation" %>
+  <%= form.submit "Update Reservation", confirm: "updated reservations will be submitted for admin approval" %>
 <% end %>
 
 <%= link_to "Delete Reservation", reservation_path, method: :delete,

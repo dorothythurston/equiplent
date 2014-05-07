@@ -1,6 +1,10 @@
 class ReservationsController < ApplicationController
   respond_to :html
 
+  def index
+    @reservations = Reservation.all
+  end
+
   def create
     @reservation = Reservation.new(reservation_params)
     if @reservation.save(reservation_params)
@@ -41,6 +45,7 @@ class ReservationsController < ApplicationController
     params.require(:reservation).permit(
       :item_id,
       :begins_at,
+      :reservation_status,
       :ends_at
     ).merge(user_id: current_user.id)
   end

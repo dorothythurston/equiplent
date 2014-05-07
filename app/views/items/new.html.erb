@@ -1,7 +1,7 @@
 <h2>Add new Item</h2>
 <%= form_for(@item) do |form| %>
   <%= form.text_field :name, placeholder: "Name" %>
-  <%= form.select :item_type, Item::TYPES, include_blank: "Item Type" %>
+  <%= form.select :category, Item::TYPES, include_blank: "Item Type" %>
   <%= form.url_field :url, placeholder: "Image link" %>
   <%= form.submit "Create Item" %>
 <% end %>

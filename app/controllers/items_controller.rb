@@ -1,6 +1,10 @@
 class ItemsController < ApplicationController
   respond_to :html
 
+  def index
+    @items = Item.all
+  end
+
   def new
     @item = Item.new
   end
