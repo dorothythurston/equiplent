@@ -9,6 +9,12 @@ class Reservation < ActiveRecord::Base
 
   TYPES = ['approved', 'pending', 'current', 'closed']
 
+  def self.almost_due(warning_time)
+    where("ends_at > ?", warning_time).
+      where.not(reservation_status: 'closed').
+      distinct
+  end
+
   def current_reservation?
     reservation_status == "approved"
   end
