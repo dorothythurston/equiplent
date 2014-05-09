@@ -3,7 +3,7 @@
     <div>
       <li>
         <%= reservation.user.first_name %> <%= reservation.user.last_name %>:
-        <%= reservation.item.name %> <%= reservation.item.item_type %>
+        <%= reservation.item.name %> <%= reservation.item.category %>
         // <%= reservation.begins_at.to_formatted_s(:long) %>
         -- <%= reservation.ends_at.to_formatted_s(:long) %>
         // <%= reservation.reservation_status %>

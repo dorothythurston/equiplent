@@ -7,23 +7,43 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-<% if signed_in? %>
-  <%= form_for(:search, url: search_path, method: :get) do |form| %>
-    <%= form.text_field :query, placeholder: "Search Here" %>
-    <%= form.submit "Search" %>
-  <% end %>
-    Signed in as: <%= current_user.email %>
-    <%= link_to 'Sign out', sign_out_path, method: :delete %>
-  <% else %>
-    <%= link_to 'Sign in', sign_in_path %>
-  <% end %>
-
-  <div id="flash">
-    <% flash.each do |key, value| %>
-      <div class="flash <%= key %>"><%= value %></div>
-    <% end %>
+<div id='outer-wrapper'>
+  <div id='logo'>
+    <h1>Equiplent</h1>
   </div>
-<%= yield %>
+  <div id='side-nav'>
+    <% if signed_in? %>
+      <%= form_for(:search, url: search_path, method: :get) do |form| %>
+        <%= form.text_field :query, placeholder: "Search Here" %>
+        <%= form.submit "Search" %>
+      <% end %>
+      <% if current_user.admin? %>
+        <div>
+          <%= link_to 'View all Reservations', reservations_path %>
+        </div>
+        <div>
+          <%= link_to "View all Equipment", items_path %>
+        </div>
+        <div>
+          <%= link_to "Make a New Item", new_item_path %>
+        </div>
+      <% end %>
+        Signed in as: <%= current_user.email %>
+        <%= link_to 'Sign out', sign_out_path, method: :delete %>
+      <% else %>
+        <%= link_to 'Sign in', sign_in_path %>
+      <% end %>
+  </div>
 
+  <div id='main-content'>
+    <div id="flash">
+      <% flash.each do |key, value| %>
+        <div class="flash <%= key %>"><%= value %>
+        </div>
+      <% end %>
+    </div>
+  <%= yield %>
+  </div>
+</div>
 </body>
 </html>

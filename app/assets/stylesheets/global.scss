@@ -1,0 +1,22 @@
+#outer-wrapper {
+  @include outer-container;
+
+  #logo {
+    padding: 5px;
+  }
+
+  #side-nav {
+    @include span-columns(3);
+    background-color: #e0dedf;
+    border-radius: 10px;
+    padding: 15px;
+  }
+
+  #main-content {
+    @include span-columns(9);
+    background-color: #F3F5F2;
+    border-radius: 10px;
+    padding: 15px;
+  }
+
+}

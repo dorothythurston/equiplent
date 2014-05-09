@@ -21,7 +21,7 @@
 <% @user.reservations.each do |reservation|%>
   <div>
     <li>
-      <%= reservation.item.name %> <%= reservation.item.item_type %>
+      <%= reservation.item.name %> <%= reservation.item.category %>
       // <%= reservation.begins_at.to_formatted_s(:long) %>
       -- <%= reservation.ends_at.to_formatted_s(:long) %>
     </li>
