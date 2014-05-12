@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140507210238) do
+ActiveRecord::Schema.define(version: 20140512175701) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -24,6 +24,20 @@ ActiveRecord::Schema.define(version: 20140507210238) do
     t.string   "category",   null: false
   end
 
+  create_table "member_profiles", force: true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "production"
+    t.string   "role"
+  end
+
+  create_table "pairs", force: true do |t|
+    t.integer  "item_id",      null: false
+    t.integer  "pair_item_id", null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "reservations", force: true do |t|
     t.integer  "user_id",                                null: false
     t.integer  "item_id",                                null: false
@@ -32,11 +46,6 @@ ActiveRecord::Schema.define(version: 20140507210238) do
     t.string   "reservation_status", default: "current", null: false
     t.datetime "begins_at",                              null: false
     t.datetime "ends_at",                                null: false
-  end
-
-  create_table "user_profiles", force: true do |t|
-    t.datetime "created_at"
-    t.datetime "updated_at"
   end
 
   create_table "users", force: true do |t|

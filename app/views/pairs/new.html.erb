@@ -1,0 +1,13 @@
+<h2>add pairs to items</h2>
+<%= form_for @pair do |form| %>
+  <% @items.each do |item| %>
+    <%= form.fields_for item do |item_field| %>
+    <table>
+      <td><%= link_to item.name, item_path(item) %></td>
+      <td><%= form.radio_button :item_id, item.id %></td>
+      <td><%= form.radio_button :pair_item_id, item.id %></td>
+    </table>
+    <% end %>
+  <% end %>
+  <%= form.submit 'add pair' %>
+<% end %>

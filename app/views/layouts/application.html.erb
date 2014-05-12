@@ -18,26 +18,27 @@
         <%= form.text_field :query, placeholder: "search here" %>
         <%= form.submit "search" %>
       <% end %>
-      <% if current_user.admin? %>
-        <div>
-          <%= link_to 'reservations', reservations_path %>
-        </div>
-        <div>
-          <%= link_to 'users', users_path %>
-        </div>
-        <div>
-          <%= link_to "add new item", new_item_path %>
-        </div>
-      <% end %>
-
+        <% if current_user.admin? %>
+          <div>
+            <%= link_to 'reservations', reservations_path %>
+          </div>
+          <div>
+            <%= link_to 'users', users_path %>
+          </div>
+          <div>
+            <%= link_to "new item", new_item_path %>
+          </div>
+          <div>
+            <%= link_to "new pair", new_pair_path %>
+          </div>
+        <% end %>
         <div>
           <%= link_to "equipment log", items_path %>
         </div>
-
         <%= link_to 'sign out', sign_out_path, method: :delete %>
       <% else %>
         <%= link_to 'sign in', sign_in_path %>
-      <% end %>
+    <% end %>
   </div>
 
   <div id='main-content'>

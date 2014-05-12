@@ -4,6 +4,7 @@ Equiplent::Application.routes.draw do
   resource :search, only: [:show]
   resource :dashboard, only: [:show]
   resources :users, only: [:index, :show, :edit, :update]
+  resources :pairs, only: [:new, :create, :destroy]
   resources :searches, only: [:show]
   resources :items, only: [:index, :new, :create, :show, :update, :edit, :destroy]
   resources :reservations, only: [:index,:show, :destroy, :update, :create, :new, :edit]
