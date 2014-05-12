@@ -1,0 +1,1 @@
+Time::DATE_FORMATS[:nice] = "%B %d, %Y"

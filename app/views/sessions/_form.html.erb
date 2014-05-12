@@ -1,7 +1,7 @@
-<%= form_for :session, :url => session_path do |form| %>
+<%= form_for :session, url: session_path do |form| %>
   <div class='text-field'>
     <%= form.label :email %>
-    <%= form.text_field :email, :type => 'email' %>
+    <%= form.text_field :email, type: 'email' %>
   </div>
 
   <div class='password-field'>
@@ -16,7 +16,7 @@
   <div class='other-links'>
     <% if Clearance.configuration.allow_sign_up? %>
       <%= link_to t('.sign_up'), sign_up_path %>
-    <% end %>
+    |<% end %>
     <%= link_to t('.forgot_password'), new_password_path %>
   </div>
 <% end %>

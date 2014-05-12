@@ -17,6 +17,20 @@
     background-color: #F3F5F2;
     border-radius: 10px;
     padding: 15px;
+
+    #search-results {
+     @include span-columns(3);
+     background-color: #fefefe;
+     border-radius: 10px;
+     padding: 15px;
+    }
+
+    #date-select {
+      @include span-columns(9);
+      background-color: #fefefe;
+      border-radius: 10px;
+      padding: 15px;
+    }
   }
 
 }

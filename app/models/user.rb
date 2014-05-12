@@ -2,7 +2,7 @@ class User < ActiveRecord::Base
   include Clearance::User
 
   belongs_to :profile, polymorphic: true
-  has_many :reservations
+  has_many :reservations, dependent: :destroy
   has_many :items, through: :reservations
 
   TYPES = ['brown student', 'guest']

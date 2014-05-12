@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Equiplent</title>
+  <title>equiplent</title>
   <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
   <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
   <%= csrf_meta_tags %>
@@ -9,29 +9,34 @@
 <body>
 <div id='outer-wrapper'>
   <div id='logo'>
-    <h1>Equiplent</h1>
+    <h1>equiplent</h1>
   </div>
   <div id='side-nav'>
     <% if signed_in? %>
+      signed in as: <%= link_to current_user.email, user_path(current_user) %>
       <%= form_for(:search, url: search_path, method: :get) do |form| %>
-        <%= form.text_field :query, placeholder: "Search Here" %>
-        <%= form.submit "Search" %>
+        <%= form.text_field :query, placeholder: "search here" %>
+        <%= form.submit "search" %>
       <% end %>
       <% if current_user.admin? %>
         <div>
-          <%= link_to 'View all Reservations', reservations_path %>
+          <%= link_to 'reservations', reservations_path %>
         </div>
         <div>
-          <%= link_to "View all Equipment", items_path %>
+          <%= link_to 'users', users_path %>
         </div>
         <div>
-          <%= link_to "Make a New Item", new_item_path %>
+          <%= link_to "add new item", new_item_path %>
         </div>
       <% end %>
-        Signed in as: <%= current_user.email %>
-        <%= link_to 'Sign out', sign_out_path, method: :delete %>
+
+        <div>
+          <%= link_to "equipment log", items_path %>
+        </div>
+
+        <%= link_to 'sign out', sign_out_path, method: :delete %>
       <% else %>
-        <%= link_to 'Sign in', sign_in_path %>
+        <%= link_to 'sign in', sign_in_path %>
       <% end %>
   </div>
 

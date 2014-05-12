@@ -6,25 +6,23 @@
 <% if current_user.admin %>
   <%= form_for(@user) do |form| %>
     <%= form.check_box :admin %>
-    <%= form.submit 'Change Admin Status' %>
+    <%= form.submit 'change admin status' %>
   <% end %>
 <% end %>
 
 <% if @user = current_user %>
   <div>
-    <%= link_to 'Edit personal information', edit_user_path(current_user) %>
+    <%= link_to 'edit personal information', edit_user_path(current_user) %>
   </div>
 <% end %>
 
-<h3>Reservations:</h3>
-<ul>
+<h3>reservations:</h3>
 <% @user.reservations.each do |reservation|%>
   <div>
     <li>
-      <%= reservation.item.name %> <%= reservation.item.category %>
+      <%= link_to reservation.item.name, reservation_path(reservation) %> <%= reservation.item.category %>
       // <%= reservation.begins_at.to_formatted_s(:long) %>
       -- <%= reservation.ends_at.to_formatted_s(:long) %>
     </li>
   </div>
-</ul>
 <% end %>

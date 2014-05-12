@@ -10,7 +10,7 @@
         <%= link_to 'view item', item_path(reservation.item) %>
         <%= form_for(reservation) do |form| %>
           <%= form.select :reservation_status, Reservation::TYPES, include_blank: "select status" %>
-          <%= form.submit 'Update Status' %>
+          <%= form.submit 'update status' %>
         <%end%>
       </li>
     </div>

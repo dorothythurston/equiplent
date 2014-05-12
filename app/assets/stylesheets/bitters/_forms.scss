@@ -17,7 +17,6 @@ fieldset {
 input,
 label,
 select {
-  display: block;
   font-family: $form-font-family;
   font-size: $form-font-size;
 }
@@ -90,6 +89,7 @@ input[type="submit"] {
   @include appearance(none);
   cursor: pointer;
   user-select: none;
+
   vertical-align: middle;
   white-space: nowrap;
 }

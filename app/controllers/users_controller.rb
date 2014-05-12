@@ -1,6 +1,10 @@
 class UsersController < Clearance::UsersController
   respond_to :html
   
+  def index
+    @users = User.all
+  end
+
   def show
     @user = find_user
   end

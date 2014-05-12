@@ -1,11 +1,16 @@
-<h2>Reservation for <%= @reservation.item.name %></h2>
+<h2>reservation for <%= link_to @reservation.item.name, item_path(@reservation.item) %></h2>
 <div>
   <p>
-    Reservation dates: <%= @reservation.begins_at.to_formatted_s(:long)  %>
+    <div>
+      reserved by: <%= link_to @reservation.user.email, user_path(@reservation.user) %>
+    </div>
+    reservation dates: <%= @reservation.begins_at.to_formatted_s(:long)  %>
     -- <%= @reservation.ends_at.to_formatted_s(:long) %>
-    // status: <%= @reservation.reservation_status %>
+    <div>
+      status: <%= @reservation.reservation_status %>
+    </div>
   </p>
 </div>
 <% if current_user == @reservation.user %>
-  <%= link_to "Edit this Reservation", edit_reservation_path %>
+  <%= link_to "edit this reservation", edit_reservation_path %>
 <% end %>
