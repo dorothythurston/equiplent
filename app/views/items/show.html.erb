@@ -4,28 +4,38 @@
       <%= link_to 'edit' , edit_item_path(@item) %>
     <% end %>
   </div>
-<%= image_tag @item.url, width: 200 %>
-<h3>description</h3>
-<div>
-  item type: <%= @item.category %>
+
+<div id='item-image'>
+  <%= image_tag @item.url %>
 </div>
 
-<% @item.pair_items.each do |pair_item| %>
-  frequently paired with: <%= link_to pair_item.name, item_path(pair_item) %>
-  <% if current_user.admin? %>
-    (<%= link_to 'delete', pair_path(@item, pair_item_id: pair_item.id), method: :delete %>)
+<div id= 'item-description'>
+  <h3>description</h3>
+  <div>
+    item type: <%= link_to @item.category, search_path(search: {query: @item.category}) %>
+  </div>
+
+  <% if @item.pair_items.exists? %>
+    frequently paired with:
+    <% @item.pair_items.each do |pair_item| %>
+      <%= link_to pair_item.name, pair_item %>
+      <% if current_user.admin? %>
+        (<%= link_to 'delete', pair_path(@item, pair_item_id: pair_item.id), method: :delete %>)
+      <% end %>
+    <% end %>
   <% end %>
+</div>
+
+<% if @item.reservations.exists? %>
+  <h3>reservations</h3>
+    <% @item.reservations.each do |reservation| %>
+      <li>
+        <%= reservation.begins_at.to_formatted_s(:long) %> -
+        <%= reservation.ends_at.to_formatted_s(:long) %> //
+        status: <%= link_to reservation.reservation_status, reservation_path(reservation) %>
+      </li>
+    <% end %>
 <% end %>
-
-
-<h3>reservations</h3>
-  <% @item.reservations.each do |reservation| %>
-    <li>
-      <%= reservation.begins_at.to_formatted_s(:long) %> -
-      <%= reservation.ends_at.to_formatted_s(:long) %> //
-      status: <%= link_to reservation.reservation_status, reservation_path(reservation) %>
-    </li>
-  <% end %>
 
 <%= form_for @reservation do |form| %>
   <%= render 'reservations/error_messages', reservation: form.object %>

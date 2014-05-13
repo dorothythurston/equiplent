@@ -1,15 +1,13 @@
 <div id='search-results'>
-  <h3><%= item.name %>   <%= link_to 'view ', item_path(item) %>
+  <h3>
+    <%= item.name %><%= link_to image_tag(item.url, width: 150), item %>
   </h3>
-  <%= image_tag item.url, width: 150 %>
+
   <% if item.reserved_by?(current_user) %>
-    <p>current reservations:</p>
+    <p>my reservations:</p>
     <% current_user.items.each do |item| %>
       <div>
-      </div>
-      <div>
-        <%= link_to 'change current reservation', edit_reservation_path(item.reservation)%>
-        (<%= item.reservation.created_at.to_formatted_s(:short) %>)
+        <%= link_to item.reservation.created_at.to_formatted_s(:short), edit_reservation_path(item.reservation)%>
       </div>
     <% end %>
   <% end %>

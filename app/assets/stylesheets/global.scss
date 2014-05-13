@@ -25,6 +25,16 @@
      padding: 15px;
     }
 
+    #item-description {
+      @include span-columns(6)
+    }
+
+    #item-image {
+      @include span-columns(3);
+      width: 200px;
+      border-radius: 10px;
+    }
+
     #date-select {
       @include span-columns(9);
       background-color: #fefefe;
