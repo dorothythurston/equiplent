@@ -7,7 +7,7 @@ class Reservation < ActiveRecord::Base
 
   validates_with DateChecker
 
-  TYPES = ['approved', 'pending', 'current', 'closed']
+  TYPES = ['approved', 'pending', 'closed']
 
   def self.almost_due(warning_time)
     where("ends_at > ?", warning_time).

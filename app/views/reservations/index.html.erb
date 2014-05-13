@@ -3,11 +3,10 @@
     <div>
       <li>
         <%= reservation.user.first_name %> <%= reservation.user.last_name %>:
-        <%= reservation.item.name %> <%= reservation.item.category %>
+        <%= link_to reservation.item.name, reservation.item %> <%= reservation.item.category %>
         // <%= reservation.begins_at.to_formatted_s(:long) %>
         -- <%= reservation.ends_at.to_formatted_s(:long) %>
-        // <%= reservation.reservation_status %>
-        <%= link_to 'view item', item_path(reservation.item) %>
+        // <%= link_to reservation.reservation_status, reservation %>
         <%= form_for(reservation) do |form| %>
           <%= form.select :reservation_status, Reservation::TYPES, include_blank: "select status" %>
           <%= form.submit 'update status' %>
