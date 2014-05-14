@@ -1,9 +1,11 @@
 <h2>user index</h2>
-<% @users.each do |user| %>
-  <div>
-    <li>
-      <%= link_to user.email, user_path(user) %>
-    </li>
-  </div>
-<% end %>
+<ul>
+  <% @users.each do |user| %>
+    <div>
+      <li>
+        <%= link_to user.email, user %>
+      </li>
+    </div>
+  <% end %>
+</ul>
 <% paginate @users %>

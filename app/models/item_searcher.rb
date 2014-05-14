@@ -17,7 +17,7 @@ class ItemSearcher
 
   def find_item
     Item.where(
-      "name ilike :query OR category ilike :query",
+      "name ilike :query OR category ilike :query OR description ilike :query",
       query: fuzzy_query
     ).distinct
   end

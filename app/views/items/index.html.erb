@@ -1,9 +1,11 @@
 <h2>equipment log</h2>
-<% @items.each do |item| %>
-  <div>
-    <li>
-      <%= link_to item.name, item_path(item) %>
-    </li>
-  </div>
-<% end %>
+<ul>
+  <% @items.each do |item| %>
+    <div>
+      <li>
+        <%= link_to item.name, item %>
+      </li>
+    </div>
+  <% end %>
+</ul>
 <%= paginate @items %>

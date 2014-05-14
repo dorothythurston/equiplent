@@ -7,6 +7,7 @@ class UsersController < Clearance::UsersController
 
   def show
     @user = find_user
+    @reservations = @user.reservations.paginated(params[:page], 3).sort(params[:sort])
   end
 
   def edit

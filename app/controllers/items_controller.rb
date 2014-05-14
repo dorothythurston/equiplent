@@ -11,7 +11,11 @@ class ItemsController < ApplicationController
 
   def create
     @item = Item.create(item_params)
-    redirect_to @item
+    if @item.save(item_params)
+      redirect_to @item
+    else
+      render :new
+    end
   end
 
   def show
@@ -44,7 +48,10 @@ class ItemsController < ApplicationController
 
   def item_params
     params.require(:item).permit(
-      :name, :url, :category
+      :name,
+      :url,
+      :description,
+      :category
     )
   end
 end

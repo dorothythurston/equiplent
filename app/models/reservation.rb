@@ -46,7 +46,11 @@ class Reservation < ActiveRecord::Base
   end
 
   def self.sort(sort_field)
-    field = connection.quote_string(FIELD_MAP[sort_field] || sort_field)
-    includes(:user, :item).order("#{field} ASC")
+    if sort_field.nil?
+      scoped
+    else
+      field = connection.quote_string(FIELD_MAP[sort_field] || sort_field)
+      includes(:user, :item).order("#{field} ASC")
+    end
   end
 end

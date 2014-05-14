@@ -1,0 +1,8 @@
+<div>
+  <li>
+    <%= link_to reservation.item.name, reservation_path(reservation) %> <%= reservation.item.category %>
+    // <%= reservation.begins_at.to_formatted_s(:long) %>
+    -- <%= reservation.ends_at.to_formatted_s(:long) %>
+  // <%= link_to reservation.reservation_status, reservation %>
+  </li>
+</div>

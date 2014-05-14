@@ -3,6 +3,11 @@ class Item < ActiveRecord::Base
   has_many :pairs, dependent: :destroy
   has_many :pair_items, through: :pairs
 
+  validates :name, presence: true
+  validates :url, presence: true
+  validates :category, presence: true
+  validates :description, presence: true
+
   CATEGORIES = ['camera', 'tripod', 'audio', 'other']
 
   def self.paginated(page, per)

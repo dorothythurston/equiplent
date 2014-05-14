@@ -15,12 +15,16 @@
 <% end %>
 
 <h3>reservations:</h3>
-<% @user.reservations.each do |reservation|%>
-  <div>
-    <li>
-      <%= link_to reservation.item.name, reservation_path(reservation) %> <%= reservation.item.category %>
-      // <%= reservation.begins_at.to_formatted_s(:long) %>
-      -- <%= reservation.ends_at.to_formatted_s(:long) %>
-    </li>
-  </div>
-<% end %>
+<table>
+  <tr>
+    <th><%= link_to "name", sort: "first_name" %></th>
+    <th><%= link_to "item", sort: "name" %></th>
+    <th><%= link_to "category", sort: "category" %></th>
+    <th><%= link_to "start", sort: "begins_at" %></th>
+    <th><%= link_to "end", sort: "ends_at" %></th>
+    <th><%= link_to "status", sort: "reservation_status" %></th>
+    <th></th>
+  </tr>
+  <%= render @reservations %>
+  <%= paginate @reservations %>
+</table>
