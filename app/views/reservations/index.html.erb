@@ -1,17 +1,14 @@
-<h3>All reservations</h3>
-  <% @reservations.each do |reservation|%>
-    <div>
-      <li>
-        <%= reservation.user.first_name %> <%= reservation.user.last_name %>:
-        <%= link_to reservation.item.name, reservation.item %> <%= reservation.item.category %>
-        // <%= reservation.begins_at.to_formatted_s(:long) %>
-        -- <%= reservation.ends_at.to_formatted_s(:long) %>
-        // <%= link_to reservation.reservation_status, reservation %>
-        <%= form_for(reservation) do |form| %>
-          <%= form.select :reservation_status, Reservation::TYPES, include_blank: "select status" %>
-          <%= form.submit 'update status' %>
-        <%end%>
-      </li>
-    </div>
-  </ul>
-<% end %>
+<h2>all reservations</h2>
+<table>
+  <tr>
+    <th><%= link_to "name", sort: "first_name" %></th>
+    <th><%= link_to "item", sort: "name" %></th>
+    <th><%= link_to "category", sort: "category" %></th>
+    <th><%= link_to "start", sort: "begins_at" %></th>
+    <th><%= link_to "end", sort: "ends_at" %></th>
+    <th><%= link_to "status", sort: "reservation_status" %></th>
+    <th></th>
+  </tr>
+  <%= render @reservations %>
+  <%= paginate @reservations %>
+</table>

@@ -28,13 +28,14 @@
 
 <% if @item.reservations.exists? %>
   <h3>reservations</h3>
-    <% @item.reservations.each do |reservation| %>
+    <% @recent_reservations.each do |reservation| %>
       <li>
         <%= reservation.begins_at.to_formatted_s(:long) %> -
         <%= reservation.ends_at.to_formatted_s(:long) %> //
         status: <%= link_to reservation.reservation_status, reservation_path(reservation) %>
       </li>
     <% end %>
+    <%= paginate @recent_reservations %>
 <% end %>
 
 <%= form_for @reservation do |form| %>

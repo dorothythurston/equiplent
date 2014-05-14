@@ -2,7 +2,7 @@ class ItemsController < ApplicationController
   respond_to :html
 
   def index
-    @items = Item.all
+    @items = Item.paginated(params[:page], 20)
   end
 
   def new
@@ -16,6 +16,7 @@ class ItemsController < ApplicationController
 
   def show
     @item = find_item
+    @recent_reservations = @item.reservations.recent.paginated(params[:page], 3)
     @reservation = Reservation.new(item: @item)
   end
 

@@ -1,4 +1,5 @@
 source 'https://rubygems.org'
+gem 'kaminari'
 gem 'neat'
 gem 'bourbon'
 gem 'clearance'
@@ -12,5 +13,9 @@ gem 'turbolinks'
 gem 'jbuilder', '~> 1.2'
 group :doc do
   gem 'sdoc', require: false
+end
+
+group :development do
+  gem 'pry'
 end
 

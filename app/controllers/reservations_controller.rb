@@ -2,7 +2,10 @@ class ReservationsController < ApplicationController
   respond_to :html
 
   def index
-    @reservations = Reservation.all
+    @reservations = Reservation.paginated(params[:page], 10)
+    if params[:sort]
+      @reservations = @reservations.sort(params[:sort])
+    end
   end
 
   def create

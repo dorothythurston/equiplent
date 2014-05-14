@@ -1,0 +1,14 @@
+  <tr>
+    <td><%= link_to reservation.user.name, reservation.user %></td>
+    <td><%= link_to reservation.item.name, reservation.item %></td>
+    <td><%= link_to reservation.item.category, reservation.item %></td>
+    <td><%= link_to reservation.begins_at.to_formatted_s(:long), reservation %></td>
+    <td><%= link_to reservation.ends_at.to_formatted_s(:long), reservation %></td>
+    <td><%= link_to reservation.reservation_status, reservation %></td>
+    <td>
+      <%= form_for(reservation) do |form| %>
+        <%= form.select :reservation_status, Reservation::TYPES %>
+        <%= form.submit 'update' %>
+      <%end%>
+    </td>
+  </tr>

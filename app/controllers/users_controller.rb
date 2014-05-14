@@ -2,7 +2,7 @@ class UsersController < Clearance::UsersController
   respond_to :html
   
   def index
-    @users = User.all
+    @users = User.paginated(params[:page], 20)
   end
 
   def show
