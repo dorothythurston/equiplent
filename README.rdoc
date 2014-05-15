@@ -1,28 +1,18 @@
-== README
+Equiplent - Equipment Management App
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Equiplent is an inventory management app that was originally designed to manage
+Brown Motion Picture's movie production equipent checkouts.
 
-Things you may want to cover:
+Features
+- User accounts and authorization
+- Equipment index
+- Search on item names, category, and description
+- User index
+- Frequently paired items
+- Item reservation system
+- Admin reservation approval
+- Student and guest profiles
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+Thanks to:
+Avi, Josh, Goose, Gabe, Harry, and all the awesome Metis students that reviewed
+my pull requests :)
